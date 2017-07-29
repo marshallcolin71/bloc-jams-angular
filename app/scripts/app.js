@@ -21,6 +21,7 @@ angular.module('blocJams', ['ui.router']);
 $stateProvider
     .state('landing', {
         url: '/',
+        controller: 'LandingCtrl as landing',
         templateUrl: '/templates/landing.html'
     })
     .state('album', {
@@ -29,5 +30,6 @@ $stateProvider
     })
     .state('collection', {
         url: '/',
+        controller: 'CollectionCtrl as collection',
         templateUrl: '/templates/collection.html'
     });
