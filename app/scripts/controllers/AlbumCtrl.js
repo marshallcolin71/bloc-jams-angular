@@ -1,6 +1,7 @@
 (function () {
     function AlbumCtrl () {
-        albumData = albumPicasso
+        this.albumData = albumPicasso
+        console.log (this.albumData)
 
     }
 
