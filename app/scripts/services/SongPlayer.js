@@ -37,8 +37,7 @@
 
             setSong(song);
 
-            currentBuzzObject.play();
-            song.playing = true; //why bother stating this?
+            playSong (song);
 
         }
 
@@ -49,8 +48,17 @@
             song.playing = false;
       };
 
+      function playSong (song)  {
+            currentBuzzObject.play ();
+            song.playing = true;
+
+
+      }
+
         return SongPlayer;
     }
+
+
 
     angular
         .module('blocJams')
