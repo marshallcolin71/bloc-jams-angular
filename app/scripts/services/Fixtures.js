@@ -33,7 +33,13 @@
          };
 
         Fixtures.getCollection = function (numberOfAlbums) {
-            return albumPicasso [12];
+            var collection = [];
+
+            for (i=0; i <= numberOfAlbums; i++) {
+                collection.push (albumPicasso)
+            }
+
+            return collection;
         }
 
         Fixtures.getAlbum = function() {
