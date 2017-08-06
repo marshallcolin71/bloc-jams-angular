@@ -27,8 +27,7 @@
 
         var setSong = function(song) {
              if (currentBuzzObject) {
-                 currentBuzzObject.stop();
-                 SongPlayer.currentSong.playing = null;
+                 stopSong(song);
              }
 
              currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -39,7 +38,16 @@
              SongPlayer.currentSong = song;
           };
 
-        SongPlayer.SongPlayer.currentSong = null;  //Why is this repeated here as stated in cp 8?//
+        /**
+         @function stopSong
+         @desc stops currently playing song
+         @param {Object}
+       */
+         var stopSong = function(song) {
+             currentBuzzObject.stop();
+             song.playing = null;
+         }
+
 
         /**
         @function .play
@@ -76,14 +84,32 @@
             currentSongIndex--;
 
             if (currentSongIndex < 0) {
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null
+                stopSong(song);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
-                playSong(song;)
+                playSong(song);
             }
       };
+
+      /**
+      @function .next
+      @desc increments to the next song in the current album and plays it
+      */
+       SongPlayer.next = function() {
+           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+           currentSongIndex++;
+
+           if (currentSongIndex >= currentAlbum.songs.length) {
+               var song = currentAlbum.songs[0];
+               setSong(song);
+               playSong(song);
+           } else {
+               var song = currentAlbum.songs[currentSongIndex];
+               setSong(song);
+               playSong(song);
+           }
+       }
 
       function playSong (song)  {
             currentBuzzObject.play ();
