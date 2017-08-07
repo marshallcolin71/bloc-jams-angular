@@ -136,6 +136,16 @@
           }
        };
 
+       SongPlayer.volume = 100;
+
+       SongPlayer.setVolume = function(value) {
+          if(currentBuzzObject) {
+              currentBuzzObject.setVolume(value);
+          };
+       };
+
+
+
       function playSong (song)  {
             currentBuzzObject.play ();
             song.playing = true;
