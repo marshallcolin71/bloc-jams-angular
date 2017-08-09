@@ -11,7 +11,7 @@
           };
 
           return {
-              templateUrl: '/templates/directives/seekBar.html',
+              templateUrl: '/templates/directives/seek_bar.html',
               replace: true,
               restrict: 'E',
               scope: {

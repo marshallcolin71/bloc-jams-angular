@@ -69,13 +69,19 @@
         @param {Object} song
         */
         SongPlayer.play = function(song) {
-            song = song || SongPlayer.currentSong;
+          console.log ("play", song, SongPlayer.currentSong)
+          song = song || SongPlayer.currentSong;
             if (SongPlayer.currentSong !== song) {
 
             setSong(song);
 
             playSong (song);
-        }
+          }else if (song.playing == false) {
+              playSong(song);
+          }else if (song.playing == true) {
+              SongPlayer.pause(song);
+          }
+
       };
 
       /**
@@ -84,7 +90,7 @@
        @param {Object} song
        */
       SongPlayer.pause = function(song) {
-            song = song || SongPlayer.currentSong; //What exactly is the purpose of adding this line?
+            song = song || SongPlayer.currentSong;
             currentBuzzObject.pause();
             song.playing = false;
       };
@@ -94,6 +100,7 @@
         @desc finds index of active song and decrements it by one, change active song to new song index
         */
       SongPlayer.previous = function() {
+            stopSong(SongPlayer.currentSong);
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
 
@@ -111,6 +118,7 @@
       @desc increments to the next song in the current album and plays it
       */
        SongPlayer.next = function() {
+           stopSong(SongPlayer.currentSong);
            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
            currentSongIndex++;
 
